@@ -26,6 +26,10 @@ module SessionsHelper
     @current_user ||= find_current_user
   end
 
+  def current_user?(user)
+    user == current_user
+  end
+
   def find_current_user
     remember_token = User.digest cookies[:remember_token]
     User.find_by remember_token: remember_token
